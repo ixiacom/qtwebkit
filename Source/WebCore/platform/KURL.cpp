@@ -1793,6 +1793,8 @@ bool isDefaultPortForProtocol(unsigned short port, const String& protocol)
 
 bool portAllowed(const KURL& url)
 {
+    //See DE7483 fetch_fail for active live URL - some guys were hiding malware behind blocked ports, so we're gonan shortcircuit this
+    return true;
     unsigned short port = url.port();
 
     // Since most URLs don't have a port, return early for the "no port" case.
